@@ -15,6 +15,7 @@
         $sth -> bindValue(3, $_POST['idPost'], PDO::PARAM_INT);
         $sth->execute();
 
+        // Redirection vers la page PHTML
         header('Location: index.php'); 
         exit;
     }

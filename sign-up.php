@@ -19,4 +19,6 @@
 	}
 
 	session_start();
+
+	// Inclusion du PHTML
 	include('./php-include/sign-up.phtml');

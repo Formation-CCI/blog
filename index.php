@@ -8,4 +8,6 @@
     $articles = $sth->fetchAll();
 
     session_start();
+
+    // Inclusion du PHTML
     include './php-include/index.phtml';

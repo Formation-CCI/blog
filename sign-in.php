@@ -30,6 +30,10 @@
 		{
 			//	Redirection vers la page d'authentification
 			$erreur = "Identifiants incorrects";
+			header('Location: ./sign-in.php');
+			exit; 
 		}
 	}
+
+	// Inclusion du PHTML
 	include './php-include/sign-in.phtml';

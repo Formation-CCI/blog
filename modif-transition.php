@@ -1,5 +1,4 @@
 <?php
-
     session_start();
     
     // Vérifie si le rédacteur est connecté
@@ -11,9 +10,8 @@
     }
     else
     {
-        // Redirection vers la page de connexion
-        unset($_SESSION['authentification']);
-        header('Location: sign-in.php');
+        // Sécurise le $_GET['id'] + Redirection vers la page d'édition
+        $_SESSION['idArticle'] = intval($_GET['id']);
+        header('Location: edit-article.php');
         exit;
     }
-    

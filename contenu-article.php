@@ -17,5 +17,6 @@
 
     session_start();
 
+    // Inclusion du PHTML
     include './php-include/contenu-article.phtml';
 
