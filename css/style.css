@@ -6,23 +6,34 @@ h1, h2
 {
     margin-top: 20px;
 }
-
 img,p
 {
     margin-top: 10px;
+}
+.search
+{
+    margin-top: 20px;
 }
 img
 {
     width: 350px;
     height: 350px;
 }
-
 .form
 {
     width: 300px;
 }
-
 .contenu
 {
     margin-top: 30px;
+}
+.divmain
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap
+}
+.articles
+{
+    width: 500px;
 }
