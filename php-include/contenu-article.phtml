@@ -14,15 +14,17 @@
     <?php include('./php-include/nav.phtml'); ?>
     <div class="wrap">
         <div>
-                <h1><?= $article['titre'] ?></h1>
-                <?php if($article['image'] != NULL):?>
-                    <div class="text-center img-fluid">
-                        <img class="rounded" src="./img/<?= $article['image'] ?>">
-                    </div>
-                <?php endif?>
+            <h1><?= $article['titre'] ?></h1>
+            <?php if($article['image'] != NULL):?>
+                <div class="text-center img-fluid">
+                    <img class="rounded" src="./img/<?= $article['image'] ?>">
+                </div>
+            <?php endif?>
             <p class="contenu container-fluid"><?= $article['contenu'] ?></p>
+            <p>Catégorie : <a href="theme-article.php?id=<?= intval($article['idThemes']) ?>"><?= htmlspecialchars($article['libelle']) ?></a></p>
             <p>Rédiger par <a href="redacteur-article.php?id=<?= intval($article['idRedacteurs']) ?>"><?= htmlspecialchars($article['pseudo']) ?></a> le <?= date('d-m-Y à G:i', strtotime($article['dateParution'])) ?></p>
         </div>
+
         <div>
         <hr class="form">
             <h3>Commentaires : </h3>

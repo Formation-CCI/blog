@@ -27,6 +27,12 @@
                     <div class="form-group">
                         <textarea name="contenu" placeholder="Nouveau contenu" class="form-control"><?= htmlspecialchars($article['contenu']) ?></textarea>
                     </div>
+                    <select name="theme">
+                        <option value="<?= $article['idThemes'] ?>"><?= htmlspecialchars($article['libelle']) ?></option>
+                        <?php foreach($themes as $theme): ?>
+                                <option value="<?= $theme['id'] ?>"><?= htmlspecialchars($theme['libelle']) ?></option>
+                        <?php endforeach?>
+                    </select>
                     <button type="submit" class="btn btn-primary">Publier</button>
                 </form>
                 <?php if(isset($erreur)): ?><p class="erreur"><?= $erreur ?></p><?php endif?>

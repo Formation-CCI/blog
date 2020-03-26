@@ -19,7 +19,7 @@
         {
             $titre = trim($_POST['titre']);
             $contenu = trim($_POST['contenu']);
-
+            
             // Envoie d'image
             if(array_key_exists('fichier', $_FILES))
             {
@@ -37,18 +37,24 @@
             }
 
             // Création de l'article
-            $query = 'INSERT INTO articles (titre, contenu, image, idRedacteurs) VALUES(?, ?, ?, ?)';
+            $query = 'INSERT INTO articles (titre, contenu, image, idRedacteurs, idThemes) VALUES(?, ?, ?, ?, ?)';
             $sth = $dbh->prepare($query);
             $sth -> bindValue(1, $titre, PDO::PARAM_STR);
             $sth -> bindValue(2, $contenu, PDO::PARAM_STR);
             $sth -> bindValue(3, $urlImage, PDO::PARAM_STR);
             $sth -> bindValue(4, $_SESSION['authentification'], PDO::PARAM_INT);
+            $sth -> bindValue(5, $_POST['theme'], PDO::PARAM_INT);
             $sth->execute();
 
-            // Redirection vers la page PHTML
+            //	Redirection vers le dashboard
             header('Location: dashboard.php'); 
             exit;
         }
+
+        // Affiche les thèmes
+        $query = 'SELECT id, libelle FROM themes ORDER BY libelle ASC';
+        $sth = $dbh->query($query);
+        $themes = $sth->fetchAll();
 
         // Inclusion du PHTML
         include './php-include/add-article.phtml';

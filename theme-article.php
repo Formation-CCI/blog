@@ -4,20 +4,21 @@
 	include('./php-include/database-connection.php');
 
     //	Affiche les articles du rédacteur en question
-    $query = 'SELECT articles.id, articles.titre, articles.image, articles.dateParution, articles.idRedacteurs, articles.idThemes, themes.libelle FROM articles INNER JOIN themes ON articles.idThemes = themes.id WHERE articles.idRedacteurs = ?';
+    $query = 'SELECT articles.id, articles.titre, articles.image, articles.dateParution, articles.idRedacteurs, articles.idThemes, redacteurs.pseudo FROM articles INNER JOIN redacteurs ON articles.idRedacteurs = redacteurs.id WHERE articles.idThemes = ?';
     $sth = $dbh->prepare($query);
     $sth -> bindValue(1, intval($_GET['id']), PDO::PARAM_INT);
     $sth->execute();
     $articles = $sth->fetchAll();
-    session_start();
 
-    //	Affiche le nom du rédacteur
-    $query = 'SELECT pseudo FROM redacteurs WHERE id = ?';
+    //	Affiche le nom de la catégorie
+    $query = 'SELECT libelle FROM themes WHERE id = ?';
     $sth = $dbh->prepare($query);
     $sth -> bindValue(1, intval($_GET['id']), PDO::PARAM_INT);
     $sth->execute();
-    $redacteur = $sth->fetch();
+    $theme = $sth->fetch();
+
+    session_start();
 
     // Inclusion du PHTML
-    include './php-include/redacteur-article.phtml';
+    include './php-include/theme-article.phtml';
 ?>

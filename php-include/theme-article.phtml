@@ -13,7 +13,7 @@
 	<body>
         <?php include('./php-include/nav.phtml'); ?>
         <div class="container-fluid">
-            <h1>Articles de <?= htmlspecialchars($redacteur['pseudo']) ?> :</h1>
+            <h1>Catégorie : <?= htmlspecialchars($theme['libelle']) ?></h1>
             <?php foreach($articles as $article): ?>
                 <div class="container-fluid">
                     <a href="contenu-article.php?id=<?= intval($article['id']) ?>">
@@ -24,8 +24,7 @@
                             </div>
                         <?php endif?>
                     </a>
-                    <p>Catégorie : <a href="theme-article.php?id=<?= intval($article['idThemes']) ?>"><?= htmlspecialchars($article['libelle']) ?></a></p>
-                    <p>Rédiger le <?= date('d-m-Y à G:i', strtotime($article['dateParution'])) ?></p>
+                    <p>Rédiger par <a href="redacteur-article.php?id=<?= intval($article['idRedacteurs']) ?>"><?= $article['pseudo'] ?></a> le <?= date('d-m-Y à G:i', strtotime($article['dateParution'])) ?></p>
                 </div>
             <?php endforeach ?>
         </div>

@@ -3,7 +3,7 @@
     //	Connexion à la base de données
 	include('./php-include/database-connection.php');
 
-    $query = 'SELECT articles.id, articles.titre, articles.image, articles.contenu, articles.dateParution, articles.idRedacteurs, redacteurs.pseudo FROM articles INNER JOIN redacteurs ON articles.idRedacteurs = redacteurs.id WHERE articles.id = ?';
+    $query = 'SELECT articles.id, articles.titre, articles.image, articles.contenu, articles.dateParution, articles.idThemes, articles.idRedacteurs, redacteurs.pseudo, themes.libelle FROM articles INNER JOIN redacteurs ON articles.idRedacteurs = redacteurs.id INNER JOIN themes ON articles.idThemes = themes.id WHERE articles.id = ?';
     $sth = $dbh->prepare($query);
     $sth -> bindValue(1, intval($_GET['id']), PDO::PARAM_INT);
     $sth->execute();

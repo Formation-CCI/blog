@@ -24,6 +24,7 @@
                                 </div>
                             <?php endif?>
                         </a>
+                        <p>Catégorie : <a href="theme-article.php?id=<?= intval($article['idThemes']) ?>"><?= htmlspecialchars($article['libelle']) ?></a></p>
                         <p>Rédiger par <a href="redacteur-article.php?id=<?= intval($article['idRedacteurs']) ?>"><?= htmlspecialchars($article['pseudo']) ?></a> le <?= date('d-m-Y à G:i', strtotime($article['dateParution'])) ?></p>
                     </div>
                 <?php endforeach ?>
