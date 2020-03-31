@@ -4,7 +4,7 @@
 	include('./php-include/database-connection.php');
 
     //	Affiche les articles du rédacteur en question
-    $query = 'SELECT articles.id, articles.titre, articles.image, articles.dateParution, articles.idRedacteurs, articles.idThemes, redacteurs.pseudo FROM articles INNER JOIN redacteurs ON articles.idRedacteurs = redacteurs.id WHERE articles.idThemes = ?';
+    $query = 'SELECT articles.id, articles.titre, articles.dateParution, articles.idRedacteurs, articles.idThemes, redacteurs.pseudo, images.image FROM articles INNER JOIN redacteurs ON articles.idRedacteurs = redacteurs.id INNER JOIN images ON articles.id = images.idArticles WHERE articles.idThemes = ?';
     $sth = $dbh->prepare($query);
     $sth -> bindValue(1, intval($_GET['id']), PDO::PARAM_INT);
     $sth->execute();

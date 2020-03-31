@@ -31,9 +31,27 @@ img
 {
     display: flex;
     flex-direction: row;
-    flex-wrap:wrap
+    flex-wrap: wrap;
+    padding: 10px;
 }
 .articles
 {
-    width: 500px;
+    margin: 10px;
+    box-sizing: border-box;
+    width: calc(100% / 3 - 20px); /* width: calc(100% / [nombre d'éléments souhaités par ligne] - [marges éventuelles]) */
+}
+
+@media screen and (orientation: portrait)
+{
+    .divmain
+    {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+	.articles
+    {
+        box-sizing: border-box;
+        width: calc(100% / 1);
+    }
 }
